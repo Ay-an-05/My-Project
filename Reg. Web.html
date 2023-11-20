@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(125, 155, 332, 135);
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        button {
+            background-color: pink;
+            color: black;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: orange;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: orange;
+        }
+
+        #confirmation-page {
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <h1><center>Created by Md Quamar raza #project2</center></h1>
+<h2><center>Department of CSE</center></h2>
+
+<div class="container" id="registration-container">
+    <h2>Registration Form</h2>
+    <form id="registration-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="your name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="ayan@example.com" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label>Gender:</label>
+            <input type="radio" id="male" name="gender" value="male"> <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female"> <label for="female">Female</label>
+            <input type="radio" id="other" name="gender" value="other"> <label for="other">Other</label>
+<br>
+        <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="Your-Address">
+            <input type="text" id="city" name="city" placeholder="City">
+            <input type="text" id="state" name="state" placeholder="State">
+    
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="947-027-000">
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<div class="container" id="confirmation-page">
+    <h2>Confirmation Page</h2>
+    <div id="confirmation-info">
+
+        <!-- User information will be displayed here -->
+
+    </div>
+</div>
+
+<script>
+    const registrationContainer = document.getElementById("registration-container");
+    const confirmationPage = document.getElementById("confirmation-page");
+    const confirmationInfo = document.getElementById("confirmation-info");
+    const registrationForm = document.getElementById("registration-form");
+    registrationForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        showConfirmationPage();
+    });
+
+    function showConfirmationPage() {
+        registrationContainer.style.display = "none";
+        confirmationPage.style.display = "block";
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const dob = document.getElementById("dob").value;
+        const gender = document.querySelector('input[name="gender"]:checked').value;
+        const address = document.getElementById("address").value;
+        const city = document.getElementById("city").value;
+        const state = document.getElementById("state").value;
+        const phone = document.getElementById("phone").value;
+
+        confirmationInfo.innerHTML = `
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Date of Birth:</strong> ${dob}</p>
+            <p><strong>Gender:</strong> ${gender}</p>
+            <p><strong>Address:</strong> ${address}, ${city}, ${state} </p>
+            <p><strong>Phone Number:</strong> ${phone}</p>
+        `;
+    }
+</script>
+
+</body>
+</html>
